@@ -1,0 +1,46 @@
+
+{%  extends 'posts/base.html'  %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <!-- Latest Posts -->
+    <main class="posts-listing col-lg-8"> 
+      <div class="container">
+        <div class="row">
+          <!-- post -->
+
+    {% for obj in object_list %}
+          <div class="post col-xl-6">
+            <div class="post-thumbnail"><a href="#"><img src="{{obj.thumbnail.url}}" alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+              <div class="post-meta d-flex justify-content-between">
+               
+                <div class="category">
+                  {% for cat in obj.Categories.all %}
+                      <a href="#">{{cat}}</a>
+                  {% endfor %}
+                </div>
+            
+              </div><a href="post.html">
+                <h3 class="h4">{{obj.title}}</h3></a>
+              <p class="text-muted">{{obj.overview|safe}} Read more</p>
+              <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                  <div class="avatar"><img src="{{obj.Author.profile.url}}" alt="..." class="img-fluid"></div>
+                  <div class="title"><span>{{obj.Author.username}}</span></div></a>
+                <div class="date"><i class="icon-clock"></i>{{obj.date_added|timesince}} ago</div>
+                <div class="comments meta-last"><i class="icon-comment"></i>{{obj.CC}}</div>
+              </footer>
+            </div>
+          </div>
+          <!-- post             -->
+  {% endfor %}   
+    <!-- Pagination -->
+  </div>
+    </main>   
+      {% include 'posts/sidebar.html' with latest=latest Category_Count=Category_Count %}
+  </div>
+</div>
+
+{% endblock content %}
