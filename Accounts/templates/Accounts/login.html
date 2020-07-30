@@ -1,0 +1,25 @@
+{% extends 'posts/base.html' %}
+
+{%load crispy_forms_tags%}
+{%block content %}
+
+<form class="form-horizontal" method="POST"> 
+	{% csrf_token %}
+  <fieldset>
+    <div id="legend">
+      <legend class="">Login</legend>
+      {{form|crispy}}
+    </div>
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success">Login</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+{% endblock content %}
+
+
