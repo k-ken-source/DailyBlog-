@@ -1,0 +1,21 @@
+{%  extends 'posts/base.html'  %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class='col-100 offset-0'>  <h3> Create An Article </h3>
+</div>
+<div class='col-4 offset-2'>
+  {{form.media}}
+  <form method ='POST' action ='.' enctype = 'multipart/form-data'>
+    {% csrf_token %}
+
+    {{form|crispy}}
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+  </form>
+    
+</div>
+
+
+{% endblock content %}
+

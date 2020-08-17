@@ -23,14 +23,14 @@
                   {% endfor %}
                 </div>
             
-              </div><a href="post.html">
+              </div><a href="{% url 'post' pk=obj.pk %}">
                 <h3 class="h4">{{obj.title}}</h3></a>
               <p class="text-muted">{{obj.overview|safe}} Read more</p>
               <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                   <div class="avatar"><img src="{{obj.Author.profile.url}}" alt="..." class="img-fluid"></div>
                   <div class="title"><span>{{obj.Author.username}}</span></div></a>
                 <div class="date"><i class="icon-clock"></i>{{obj.date_added|timesince}} ago</div>
-                <div class="comments meta-last"><i class="icon-comment"></i>{{obj.CC}}</div>
+                <div class="comments meta-last"><i class="icon-comment"></i>{{obj.comments.count}}</div>
               </footer>
             </div>
           </div>

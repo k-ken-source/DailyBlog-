@@ -1,6 +1,5 @@
 from django.db import models
-from tinymce import models as tinymce_models
-
+from tinymce.models import HTMLField
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -24,10 +23,8 @@ class Category(models.Model):
 class Post(models.Model):
 	Author = models.ForeignKey(User, on_delete = models.CASCADE)
 	title = models.CharField(verbose_name= 'Title', max_length = 200)
-	overview = models.TextField(verbose_name='Overview',max_length=150,default = 'Write an overview to help readers the context of the aticle.')
-	Content = tinymce_models.HTMLField()
+	Content = HTMLField()
 	date_added = models.DateTimeField(verbose_name = 'Date Added',auto_now_add=True)
-	CC = models.IntegerField(verbose_name = 'Comment Count',default=0)
 	VC = models.IntegerField(verbose_name='View Count',default = 0)
 	thumbnail = models.ImageField()
 	Categories = models.ManyToManyField(Category)
@@ -38,6 +35,12 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return reverse ('post',kwargs={'pk': self.pk})
+	
+	def get_update_url(self):
+		return reverse ('post-update',kwargs={'pk': self.pk})
+	
+	def get_delete_url(self):
+		return reverse ('post-delete',kwargs={'pk': self.pk})
 
 	@property
 	def get_comments(self):

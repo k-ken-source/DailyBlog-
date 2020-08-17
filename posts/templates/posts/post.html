@@ -18,8 +18,14 @@
                 {% for cat in obj.Categories.all %}
                 <a href="#">{{cat}}</a>
                 {% endfor %}
-
+                
               </div>
+              {% if request.user.is_authenticated %}
+                <div>  
+                  <a class = 'col-5' href ="{% url 'post-update' pk=obj.pk %}"> Update</a>
+                  <a class = 'col-5' href ="{% url 'post-delete' pk=obj.pk %}">Delete</a>
+                </div>
+              {% endif %}
             </div>
             <h1>{{obj.title}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
             <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">

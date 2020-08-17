@@ -124,15 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static_root/'
+STATIC_URL = '/static/'
 MEDIA_URL='/media/'
 #Custom static url files 
 
-STATICFILES_DIRS = [
-os.path.join(BASE_DIR,'static_in_env'),]
-VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(BASE_DIR,'static_root/')
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+#STATICFILES_DIRS = [os.path.join(BASE_DIR,'')]
+#VENV_PATH = os.path.dirname(BASE_DIR)
+STATIC_ROOT   =     os.path.join(BASE_DIR,'static_root')
+MEDIA_ROOT    =     os.path.join(BASE_DIR, 'media')
 
 
 
@@ -145,14 +144,14 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
-TINYMCE_JS_URL = os.path.join(MEDIA_URL, "tinymce/js/tinymce/tinymce.js")
+#TINYMCE_JS_URL = os.path.join(MEDIA_URL, "tinymce/js/tinymce/tinymce.js")
 TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "tinymce/")
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
     'theme': 'silver',
-    'width' : 1000,
+    'width' : 900,
     'height' : 500,
     'plugins': '''
             textcolor save link image media preview codesample contextmenu
